@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Lab4a</string>
+    <string name="title_activity_miles_to_kilometers">milesToKilometersActivity</string>
+    <string name="title_activity_fahrenheit_to_celsius">fahrenheitToCelsiusActivity</string>
+    <string name="total_bill">Total bill:</string>
+</resources>
