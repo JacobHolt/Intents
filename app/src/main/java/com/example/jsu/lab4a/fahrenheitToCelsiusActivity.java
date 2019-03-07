@@ -6,6 +6,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.EditText;
+import android.content.Intent;
 
 public class fahrenheitToCelsiusActivity extends AppCompatActivity {
 
@@ -13,17 +15,35 @@ public class fahrenheitToCelsiusActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fahrenheit_to_celsius);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
+    public void convertTemperatureClicked(View v) {
+        String f = ((EditText) findViewById(R.id.inputF)).getText().toString();
+        String c = ((EditText) findViewById(R.id.inputC)).getText().toString();
+        if (  f.isEmpty() ) {
+            if (  !c.isEmpty() ) {
+                 double celsius = Double.parseDouble(c);
+                 double fahrenheit = ((celsius * 9 / 5) + 32);
+                 ((EditText) findViewById(R.id.inputF)).setText( Double.toString(fahrenheit) );
+            }
+        }
+        else if( c.isEmpty()){
+                 double fahrenheit = Double.parseDouble(f);
+                 double celsius = ((fahrenheit - 32) * 5 / 9);
+                 ((EditText) findViewById(R.id.inputC)).setText( Double.toString(celsius) );
+            }
+        else if( c.isEmpty() && f.isEmpty()) {
+
+        }
+        else {
+            double fahrenheit = Double.parseDouble(f);
+            double celsius = ((fahrenheit - 32) * 5 / 9);
+            ((EditText) findViewById(R.id.inputC)).setText( Double.toString(celsius) );
+        }
+    }
+
+    public void homeClicked(View v) {
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+    }
 }

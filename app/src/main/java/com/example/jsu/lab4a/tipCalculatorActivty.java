@@ -1,5 +1,6 @@
 package com.example.jsu.lab4a;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -42,5 +43,10 @@ public class tipCalculatorActivty extends AppCompatActivity {
         perPerson = Math.floor(perPerson*100) / 100d;
 
         totalAmountPerPerson.setText("Total amount per person: $" + perPerson);
+    }
+
+    public void homeClicked(View v) {
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
     }
 }
